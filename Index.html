@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Compras</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Asegurémonos de que el script de Leaflet esté cargado -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Lista de Compras</h1>
+  </header>
+  <main>
+    <!-- Sección del mapa -->
+    <section class="mapa">
+      <h2>Supermercados Cercanos</h2>
+      <div id="map" style="height: 400px;"></div> <!-- Aseguramos que tenga un alto fijo -->
+    </section>
+
+    <!-- Sección de presupuesto con emoji gigante -->
+    <section class="presupuesto">
+      <h2>Mi Lista de Compras</h2>
+      <label for="presupuestoInput">Ingresa tu presupuesto:</label>
+      <input type="number" id="presupuestoInput" placeholder="Ej. 500">
+      <button id="btnPresupuesto">Establecer Presupuesto</button>
+      <div id="emojiContainer" class="emoji-container"></div> <!-- Emoji gigante -->
+    </section>
+
+    <!-- Sección de productos en H-E-B -->
+    <section class="productos">
+      <h2>Productos H-E-B</h2>
+      <div id="productosHEBContainer"></div>
+    </section>
+
+    <!-- Sección de productos en Walmart -->
+    <section class="productos">
+      <h2>Productos Walmart</h2>
+      <div id="productosWalmartContainer"></div>
+    </section>
+
+    <!-- Mi lista -->
+    <section class="mi-lista">
+      <h2>Mi Lista de Compras</h2>
+      <ul id="miListaContainer"></ul>
+    </section>
+
+    <!-- Botón para obtener recetas -->
+    <section class="recetas">
+      <h2>Recetas Sugeridas</h2>
+      <button id="obtenerRecetas">Obtener Recetas</button>
+<div id="recetasContainer"></div>
+
+    </section>
+
+    <!-- Botón para compartir la lista -->
+    <section class="compartir">
+      <h2>Compartir Lista</h2>
+      <button id="compartirBtn">Compartir mi lista</button>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas de Compras</title>
+    <link rel="stylesheet" href="estilo.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Mis Listas de Compras</h1>
+    </header>
+
+    <main>
+        <!-- Crear lista de productos -->
+        <section class="crear-lista">
+            <h2>Añadir Producto</h2>
+            <form id="form-producto">
+                <input type="text" id="nombre-producto" placeholder="Nombre del producto" required>
+                <input type="number" id="precio-producto" placeholder="Precio ($)" min="1" required>
+                <button type="submit">Añadir</button>
+            </form>
+        </section>
+
+        <!-- Listado de productos -->
+        <section class="listas">
+            <h2>Mi Lista</h2>
+            <ul id="productos-lista">
+                <!-- Productos generados dinámicamente -->
+            </ul>
+        </section>
+
+        <!-- Presupuesto -->
+        <section class="presupuesto">
+            <h2>Presupuesto</h2>
+            <p>Total: $<span id="total">0</span> <span id="emoji">😊</span></p>
+            <input type="number" id="presupuesto" placeholder="Define tu presupuesto ($)">
+            <button onclick="verificarPresupuesto()">Verificar Presupuesto</button>
+        </section>
+    </main>
+</body>
+</html>

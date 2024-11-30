@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/main.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Lista de Compras</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Presupuesto</h2>
+            <input type="number" id="presupuestoInput" placeholder="Ingresa tu presupuestoooo" />
+            <button onclick="establecerPresupuesto()">Establecer</button>
+            <p id="presupuestoEstado"></p>
+        </section>
+
+        <section>
+            <h2>Mi Lista</h2>
+            <ul id="listaDeCompras">
+                <li>Coca-Cola - Cantidad: 2 - Precio: $20</li>
+                <li>Pan Bimbo - Cantidad: 1 - Precio: $30</li>
+            </ul>
+            <button onclick="compartirLista()">Compartir Lista</button>
+        </section>
+
+        <section>
+            <h2>Estado del presupuesto</h2>
+            <div id="emoji" style="font-size: 50px;">😐</div> <!-- Emoji para cambiar con el presupuesto -->
+            <p id="presupuestoEstado"></p>
+        </section>
+
+        <section>
+            <h2>Mapa de Supermercados</h2>
+            <div id="mapid" style="height: 400px;"></div>
+        </section>
+    </main>
+
+    <script>
+        let presupuesto = 0;
+        let totalCompras = 0; // Esta variable debería ser actualizada con los precios reales de los productos
+
+        function establecerPresupuesto() {
+            const input = document.getElementById('presupuestoInput').value;
+            presupuesto = parseFloat(input);
+            alert(`Presupuesto establecido: $${presupuesto}`);
+            actualizarEstadoPresupuesto(totalCompras); // Inicializar estado con el total de compras (inicialmente 0)
+        }
+
+        function actualizarEstadoPresupuesto(total) {
+            const estado = document.getElementById('presupuestoEstado');
+            const emoji = document.getElementById('emoji');
+            if (total > presupuesto) {
+                estado.textContent = `⚠️ Has excedido tu presupuesto. Total: $${total}, Presupuesto: $${presupuesto}`;
+                emoji.textContent = '😱'; 
+                mostrarNotificacion(`Presupuesto excedido: $${total}`);
+            } else {
+                estado.textContent = `✅ Dentro del presupuesto. Total: $${total}, Presupuesto: $${presupuesto}`;
+                emoji.textContent = '😊'; 
+            }
+        }
+
+        function mostrarNotificacion(mensaje) {
+            if (Notification.permission === 'granted') {
+                new Notification(mensaje);
+            } else {
+                alert(mensaje);
+            }
+        }
+
+        async function compartirLista() {
+            const lista = {
+                name: "Mi Lista de Compras",
+                items: [
+                    { name: "Coca-Cola", quantity: 2, price: 20 },
+                    { name: "Pan Bimbo", quantity: 1, price: 30 }
+                ],
+                budget: presupuesto,
+            };
+
+            const response = await fetch('/api/share-list', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(lista),
+            });
+
+            const data = await response.json();
+            alert(`¡Lista compartida! Comparte este enlace: ${data.link}`);
+        }
+
+        function inicializarMapa(lat, lon) {
+            var map = L.map('mapid').setView([lat, lon], 13); // Coordenadas del usuario
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([lat, lon]).addTo(map)
+                .bindPopup("<b>Tu ubicación</b>")
+                .openPopup();
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                inicializarMapa(lat, lon);
+            }, function(error) {
+                alert("No se pudo obtener tu ubicación. Usando la ubicación predeterminada.");
+                inicializarMapa(19.432608, -99.133209); 
+            });
+        } else {
+            alert("Tu navegador no soporta geolocalización. Usando la ubicación predeterminada.");
+            inicializarMapa(19.432608, -99.133209); 
+        }
+    </script>
+</body>
+</html>

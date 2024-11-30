@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1>List-shop</h1>
+        <p>Organiza tus compras fácilmente</p>
+    </header>
+    <main>
+        <section class="comunidad">
+            <h2>Comunidad</h2>
+            <img src="imagenes/comunidad.png" alt="Comunidad">
+        </section>
+        <section class="listas">
+            <h2>Mis Listas</h2>
+            <div class="supermercado" id="heb">
+                <h3>H-E-B</h3>
+                <p>Total: $<span id="total-heb">0</span></p>
+                <button onclick="verProductos('heb')">Ver productos</button>
+            </div>
+            <div class="supermercado" id="walmart">
+                <h3>Walmart</h3>
+                <p>Total: $<span id="total-walmart">0</span></p>
+                <button onclick="verProductos('walmart')">Ver productos</button>
+            </div>
+        </section>
+        <section id="productos" class="productos hidden">
+            <h2>Productos</h2>
+            <div id="lista-productos"></div>
+            <button onclick="cerrarProductos()">Cerrar</button>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= lista.name %> - Lista Compartida</title>
+</head>
+<body>
+  <h1><%= lista.name %></h1>
+  <ul>
+    <% lista.items.forEach(item => { %>
+      <li><%= item.name %> - Cantidad: <%= item.quantity %> - Precio: $<%= item.price %></li>
+    <% }) %>
+  </ul>
+  <h3>Presupuesto Total: $<%= lista.budget %></h3>
+</body>
+</html>

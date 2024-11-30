@@ -1,0 +1,211 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  margin-top: 10px;
+}
+
+img {
+  width: 300px;  /* Ajusta el tamaño de la imagen */
+  height: 300px; /* Ajusta el tamaño de la imagen */
+  object-fit: cover;  /* Esto asegura que las imágenes no se distorsionen */
+}
+#contenedorUbicacion {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+}
+
+#ubicacion {
+  margin: 15px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Input */
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Lista de ubicaciones */
+#listaUbicaciones {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  color: #333;
+}
+
+#listaUbicaciones li {
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+.reseña {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.reseña h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.reseña p {
+  margin: 5px 0;
+}
+
+.reseña a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.reseña a:hover {
+  text-decoration: underline;
+}
+
+.producto {
+  margin-bottom: 20px;
+}
+
+.producto img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.producto button {
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+#emojiPresupuestoGiant {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.producto {
+  margin: 15px;
+  display: inline-block;
+  text-align: center;
+}
+
+.producto img {
+  width: 100px;
+  height: auto;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+#map {
+  width: 100%;
+  height: 300px;
+}
+
+.emoji-container {
+  font-size: 100px;
+  text-align: center;
+}
+
+.producto {
+  display: inline-block;
+  width: 150px;
+  margin: 10px;
+  text-align: center;
+}
+
+.producto img {
+  width: 100px;
+  height: 100px;
+}
+
+.producto button {
+  margin-top: 10px;
+}
+
+.receta {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.receta img {
+  width: 200px;
+  height: 150px;
+}
+#map {
+  height: 400px; /* Aseguramos que el mapa tenga un tamaño visible */
+  width: 100%;
+}
